@@ -1,2 +1,0 @@
-include ':app'
-rootProject.name = "TP3_android_Marchal"
