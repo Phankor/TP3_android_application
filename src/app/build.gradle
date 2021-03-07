@@ -2,13 +2,21 @@ plugins {
     id 'com.android.application'
 }
 
+def accounts_URL = '"' + accountsURL + '"' ?: '"Define accounts URL"';
+def config_URL = '"' + configURL + '"' ?: '"Define config URL"';
+
+android.buildTypes.each { type ->
+    type.buildConfigField 'String', 'accounts_URL', accountsURL
+    type.buildConfigField 'String', 'config_URL', configURL
+}
+
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
 
     defaultConfig {
         applicationId "com.example.tp3_android_marchal"
-        minSdkVersion 16
+        minSdkVersion 26
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -30,6 +38,7 @@ android {
 
 dependencies {
 
+    implementation 'com.amitshekhar.android:android-networking:1.0.2'
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'com.google.android.material:material:1.2.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
